@@ -65,11 +65,11 @@
 
 #### 4. システム構成・運行通知フロー
 ```mermaid
-%%{init: {"flowchart": {"htmlLabels": false, "padding": 20, "nodeSpacing": 40, "rankSpacing": 70}}}%%
+%%{init: {"flowchart": {"htmlLabels": false, "padding": 24, "nodeSpacing": 40, "rankSpacing": 70}}}%%
 flowchart LR
-    V["🚍 車両側ユニット<br>送迎バス・<br>福祉車両<br>(GPS端末搭載)<br>GPS測位情報を<br>取得し<br>パケット網で<br>定期送信"]
-    S["🖥️ キャリア<br>クラウド基盤<br>車両運行通知<br>配信サーバー<br>(ASP)<br>停留所への<br>接近を判定し<br>配信を発火"]
-    U["📱 エンドユーザー<br>保護者・<br>施設利用者<br>(携帯電話・PC)<br>到着予告<br>メールを受信<br>待ち時間ゼロ"]
+    V["【車両側<br>ユニット】<br>送迎バス・<br>福祉車両<br>(GPS端末搭載)<br>GPS測位情報を<br>取得し<br>パケット網で<br>定期送信"]
+    S["【キャリア<br>クラウド基盤】<br>車両運行通知<br>配信サーバー<br>(ASP)<br>停留所への<br>接近を判定し<br>配信を発火"]
+    U["【エンド<br>ユーザー】<br>保護者・<br>施設利用者<br>(携帯・PC)<br>到着予告<br>メールを受信<br>待ち時間ゼロ"]
 
     V -->|"① GPS位置情報<br>を自動送信"| S
     S -->|"② 到着予告<br>メールを<br>一斉配信"| U
@@ -97,11 +97,11 @@ flowchart LR
 
 #### 4. システム構成・双方向ステータス集計フロー
 ```mermaid
-%%{init: {"flowchart": {"htmlLabels": false, "padding": 20, "nodeSpacing": 40, "rankSpacing": 70}}}%%
+%%{init: {"flowchart": {"htmlLabels": false, "padding": 24, "nodeSpacing": 40, "rankSpacing": 70}}}%%
 flowchart LR
-    A["🏢 送信元・管理者<br>学校・企業・<br>自治体<br>(管理画面)<br>緊急連絡・<br>アンケートを<br>一斉送信"]
-    S["⚙️ ASPインフラ<br>一斉同報 ＆<br>リアルタイム<br>集計エンジン<br>遅延回避配信<br>開封ログ追跡<br>自動集計"]
-    U["👥 受信ユーザー<br>社員・生徒・<br>保護者<br>(携帯・PC)<br>メールを開くと<br>既読を認識<br>ワンタップ回答"]
+    A["【送信元・<br>管理者】<br>学校・企業・<br>自治体<br>(管理画面)<br>緊急連絡・<br>アンケートを<br>一斉送信"]
+    S["【ASP<br>インフラ】<br>一斉同報 ＆<br>リアルタイム<br>集計エンジン<br>遅延回避配信<br>開封ログ追跡<br>自動集計"]
+    U["【受信<br>ユーザー】<br>社員・生徒・<br>保護者<br>(携帯・PC)<br>メールを<br>開くと既読<br>ワンタップ回答"]
 
     A -->|"① 一斉同報<br>リクエスト"| S
     S <-->|"② メール受信<br>③ 既読・回答"| U
@@ -129,12 +129,12 @@ flowchart LR
 
 #### 4. 動的ルール適用アーキテクチャ
 ```mermaid
-%%{init: {"flowchart": {"htmlLabels": false, "padding": 20, "nodeSpacing": 40, "rankSpacing": 70}}}%%
+%%{init: {"flowchart": {"htmlLabels": false, "padding": 24, "nodeSpacing": 40, "rankSpacing": 70}}}%%
 flowchart LR
-    H["🏛️ 審査機関 本部<br>基本チェック<br>ルール<br>全国共通の<br>法改正・制度<br>改定マスター"]
-    B["👥 全国各支部<br>独自チェック<br>条件の設定<br>地域実情に<br>合わせ<br>ノーコード設定"]
-    E["⚙️ 審査システム<br>ユーザー定義<br>チェック<br>エンジン<br>動的ロジックを<br>高速適用<br>(改修不要)"]
-    O["📋 審査出力<br>結果出力・<br>帳票生成・<br>点検画面<br>エラー箇所を<br>ハイライト"]
+    H["【審査機関<br>本部】<br>基本チェック<br>ルール<br>全国共通の<br>法改正・制度<br>改定マスター"]
+    B["【全国各支部】<br>独自チェック<br>条件の設定<br>地域実情に<br>合わせ<br>ノーコード設定"]
+    E["【審査<br>システム】<br>ユーザー定義<br>チェック<br>エンジン<br>動的ロジックを<br>高速適用<br>(改修不要)"]
+    O["【審査出力】<br>結果出力・<br>帳票生成・<br>点検画面<br>エラー箇所を<br>ハイライト"]
 
     H -->|"全国共通<br>ルール定義"| E
     B -->|"パラメータ<br>を動的注入"| E
@@ -174,11 +174,11 @@ flowchart LR
 
 #### 4. 実施例：全店舗同時セールへの対応（深夜の切り替え作業自動化）
 ```mermaid
-%%{init: {"flowchart": {"htmlLabels": false, "padding": 20, "nodeSpacing": 40, "rankSpacing": 70}}}%%
+%%{init: {"flowchart": {"htmlLabels": false, "padding": 24, "nodeSpacing": 40, "rankSpacing": 70}}}%%
 flowchart LR
-    A["📝 事前準備<br>切り替え内容<br>の事前登録<br>・日時の設定<br>・品目・価格<br>・表示<br>メッセージ"]
-    B["⚡ 日時到来<br>システムによる<br>自動切り替え<br>品目ごとの<br>設定を入替<br>(深夜でも<br>手作業ゼロ)"]
-    C["🔄 セール終了時<br>システムによる<br>自動復元<br>品目ごとの<br>設定を<br>元に復元"]
+    A["【事前準備】<br>切り替え内容<br>の事前登録<br>・日時の設定<br>・品目・価格<br>・表示<br>メッセージ"]
+    B["【日時到来】<br>システムによる<br>自動切り替え<br>品目ごとの<br>設定を入替<br>(深夜でも<br>手作業ゼロ)"]
+    C["【セール<br>終了時】<br>システムによる<br>自動復元<br>品目ごとの<br>設定を<br>元に復元"]
 
     A -->|"① 日時の<br>到来を待機"| B
     B -->|"② 終了日時<br>の到来"| C
